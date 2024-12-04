@@ -1,0 +1,43 @@
+{{ define "main" }}
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h1>{{ .Site.Title }}</h1>
+        <p>Below you will find the list of Tunnel plugins distributed on the centralized
+        <a href="https://github.com/khulnasoft/tunnel-plugin-index">tunnel-plugin-index</a>. To install these plugins on your machine:</p>
+        <ol>
+          <li><a href="https://khulnasoft.github.io/tunnel/v0.51/getting-started/installation/">Install the latest version of Tunnel</a></li>
+          <li>Run <code>tunnel plugin install &lt;PLUGIN_NAME&gt;</code> to install a plugin.</li>
+        </ol>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Maintainer</th>
+              <th>Output</th>
+              <th>Repository</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{ range .Site.Data.index.plugins }}
+            <tr>
+              <td><a href="https://{{ .repository }}" target="_blank">{{ .name }}</a></td>
+              <td>{{ .summary }}</td>
+              <td>{{ .maintainer }}</td>
+              <td class="text-center">{{ if .output }}✓{{ end }}</td>
+              <td>
+                <a href="https://{{ .repository }}" target="_blank">
+                  <img src="https://img.shields.io/github/stars/{{ replace .repository "github.com/" "" }}?style=social" alt="GitHub stars">
+                </a>
+              </td>
+            </tr>
+            {{ end }}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+{{ end }}

@@ -1,0 +1,10 @@
+baseURL: "/"
+languageCode: en-us
+title: Tunnel Plugins
+enableGitInfo: true
+enableRobotsTXT: true
+canonifyURLs: true
+
+disableKinds:
+- taxonomy
+
